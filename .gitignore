@@ -1,0 +1,6 @@
+build
+!.vscode/*
+doxygenhtml/
+latex/
+docs/html/
+docs/latex/
