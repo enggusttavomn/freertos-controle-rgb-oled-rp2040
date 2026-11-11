@@ -1,8 +1,23 @@
-# FreeRTOS Desafio - Raspberry Pi Pico
+# Controle RGB e OLED com FreeRTOS — RP2040
 
 Um sistema completo de controle de LED RGB e display OLED implementado para o
 microcontrolador Raspberry Pi Pico utilizando FreeRTOS, com comunicação entre tarefas
 através de Event Groups, Queues e Mutexes.
+
+## Leitura rápida
+
+Firmware acadêmico em **C / FreeRTOS** para RP2040. Demonstra concorrência
+e comunicação entre tarefas no controle de um LED RGB e de um display OLED.
+
+| O que revisar | Arquivo |
+|---|---|
+| Tarefas, Event Groups, fila e mutex | [src/main.c](src/main.c) |
+| Configuração do FreeRTOS | [include/FreeRTOSConfig.h](include/FreeRTOSConfig.h) |
+| Driver do display | [include/ssd1306_i2c.c](include/ssd1306_i2c.c) |
+| Configuração de compilação | [CMakeLists.txt](CMakeLists.txt) e [src/CMakeLists.txt](src/CMakeLists.txt) |
+
+A execução requer a placa, os periféricos e o Pico SDK. O kernel do FreeRTOS
+está incluído em `FreeRTOS-Kernel/`. Não há firmware pré-compilado versionado.
 
 ## 📋 Descrição do Sistema
 
@@ -201,8 +216,8 @@ O sistema utiliza o FreeRTOS com as seguintes características:
 ### 1. Clonar o Repositório
 
 ```bash
-git clone <URL_DO_REPOSITORIO>
-cd P4
+git clone https://github.com/enggusttavomn/freertos-controle-rgb-oled-rp2040.git
+cd freertos-controle-rgb-oled-rp2040
 ```
 
 ### 2. Configurar e Executar no VSCode
@@ -237,15 +252,15 @@ cd P4
 
 Se você apenas quer usar o sistema sem desenvolver ou depurar:
 
-1. **Baixar o firmware**:
-   - Acesse a pasta `build/` do projeto
-   - Localize o arquivo `main.uf2`
+1. **Compilar o firmware**:
+   - Compile o projeto com o Pico SDK, conforme as etapas anteriores.
+   - O CMake gera `build/src/freertos_desafio.uf2`; esse binário não está versionado.
 
 2. **Carregar na Raspberry Pi Pico**:
    - Mantenha pressionado o botão BOOTSEL da Pico
    - Conecte a Pico via USB ao computador (mantendo BOOTSEL pressionado)
    - Solte o botão BOOTSEL - a Pico aparecerá como unidade USB "RPI-RP2"
-   - Copie o arquivo `main.uf2` para a unidade RPI-RP2
+   - Copie o arquivo `freertos_desafio.uf2` para a unidade RPI-RP2
    - A Pico reiniciará automaticamente e executará o firmware
 
 3. **Conectar o hardware**:
